@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  password String 
+  email String @unique 
+  name String 
+  createdAt DateTime @default(now())
+  boards Board[]
+  tasks Task[]
+  subtasks Subtask[]
+}
+
+model Board {
+  id String @id @default(uuid())
+  name String
+  authorId String 
+  author User @relation(fields: [authorId], references: [id]) 
+  tasks Task[]
+  subtasks Subtask[]
+}
+
+model Task {
+  id String @id @default(uuid())
+  name String
+  description String?
+  boardId String 
+  board Board @relation(fields: [boardId], references: [id])
+  authorId String
+  author User @relation(fields: [authorId], references: [id])
+  status Status @default(TODO)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  subtasks Subtask[]
+}
+
+model Subtask {
+  id String @id @default(uuid())
+  name String
+  boardId String 
+  board Board @relation(fields: [boardId], references: [id])
+  authorId String
+  task Task @relation(fields: [taskId], references: [id])
+  taskId String
+  author User @relation(fields: [authorId], references: [id])
+  status Boolean @default(false)
+}
+
+enum Status {
+  TODO
+  DOING
+  DONE
+}
