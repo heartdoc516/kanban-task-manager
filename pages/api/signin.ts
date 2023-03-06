@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 import { createJWT } from "@/lib/jwt";
-import { serialize } from "v8";
+import { serialize } from "cookie";
 import { comparePasswords } from "@/lib/bcrypt";
 
 export default async function signinHandler(
@@ -18,7 +18,7 @@ export default async function signinHandler(
     const isUser = await comparePasswords(req.body.password, user?.password);
 
     if (isUser) {
-      const jwt = createJWT(user);
+      const jwt = await createJWT(user);
 
       res.setHeader(
         "Set-Cookie",

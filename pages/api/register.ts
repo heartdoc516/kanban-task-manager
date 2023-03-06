@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 import { hashPassword } from "@/lib/bcrypt";
 import { createJWT } from "@/lib/jwt";
-import { serialize } from "v8";
+import { serialize } from "cookie";
 
 export default async function registerHandler(
   req: NextApiRequest,
@@ -17,7 +17,7 @@ export default async function registerHandler(
       },
     });
 
-    const jwt = createJWT(user);
+    const jwt = await createJWT(user);
 
     res.setHeader(
       "Set-Cookie",

@@ -1,0 +1,14 @@
+import { serialize } from "cookie";
+
+export default async function signOutHandler(req, res) {
+  res.setHeader(
+    "Set-Cookie",
+    serialize(process.env.COOKIE_NAME, "", {
+      httpOnly: true,
+      path: "/",
+      maxAge: -1,
+    })
+  );
+  res.writeHead(302, { Location: "/signin" });
+  res.end();
+}

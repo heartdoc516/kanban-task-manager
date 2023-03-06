@@ -1,5 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
-import { prisma } from "./db";
+import { db } from "./db";
 
 export const createJWT = (user) => {
   const issuedAt = Math.floor(Date.now() / 1000);

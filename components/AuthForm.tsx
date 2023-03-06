@@ -84,7 +84,7 @@ const AuthForm = ({ mode }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-10 text-white bg-slate-800 w-full sm:w-96 mx-auto rounded-lg border-2 border-slate-400"
+      className="p-10 text-white bg-gray-800 w-full sm:w-96 mx-auto rounded-lg border-2 border-slate-400"
     >
       <div className="flex flex-col justify-around gap-4 mx-auto">
         <div className="flex justify-center px-4 gap-4">

@@ -1,4 +1,7 @@
 import { Layout, MoreVertical, Sun, Moon, EyeOff } from "react-feather";
+import Task from "@/components/Task";
+import Board from "@/components/Board";
+import TaskColumn from "@/components/TaskColumn";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -9,37 +12,25 @@ export default function DashboardLayout({
     <div>
       {/* sidebar */}
 
-      <div className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-slate-700 w-1/6 pr-5 py-10 border-r border-slate-500">
+      <div className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0 bg-gray-800 w-1/6 pr-5 py-10 border-r border-slate-500">
         <div className="flex flex-col justify-between h-full">
           <div>
             <div className="flex justify-center text-white gap-4">
-              <Layout size={40} className="text-purple-500" />
+              <Layout size={40} className="text-indigo-600" />
               <div className="text-center">
                 <div className="text-4xl font-bold tracking-wider ">kanban</div>
               </div>
             </div>
-            <div className="text-white text-center mt-8">
+            <div className="text-white text-center mt-8 tracking-widest">
               {"All Boards (4)"}
             </div>
 
             {/* boards */}
             <div className="mt-8">
-              <div className="flex gap-3 text-gray-300 py-4 pl-5 bg-purple-400 rounded-r-full">
-                <Layout size={20} />
-                <div>Project Lauch</div>
-              </div>
-              <div className="flex gap-3 text-gray-300 py-4 pl-5 ">
-                <Layout size={20} />
-                <div>Project Lauch</div>
-              </div>
-              <div className="flex gap-3 text-gray-300 py-4 pl-5 ">
-                <Layout size={20} />
-                <div>Project Lauch</div>
-              </div>
-              <div className="flex gap-3 text-gray-300 py-4 pl-5 ">
-                <Layout size={20} />
-                <div>Project Lauch</div>
-              </div>
+              <Board selected={true} />
+              <Board selected={false} />
+              <Board selected={false} />
+              <Board selected={false} />
               <button className="flex gap-3 text-gray-300 py-4 pl-5">
                 <Layout size={20} />
                 <div>+ Create New Board</div>
@@ -49,7 +40,7 @@ export default function DashboardLayout({
 
           {/* theme toggler */}
           <div className="pl-5 pb-5">
-            <div className="flex justify-around bg-slate-900 w-full py-4 px-5 rounded-lg">
+            <div className="flex justify-around bg-gray-900 w-full py-4 px-5 rounded-lg">
               <Sun size={25} className={"text-gray-300"} />
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" value="" className="sr-only peer" />
@@ -67,12 +58,12 @@ export default function DashboardLayout({
       </div>
 
       {/* header */}
-      <div className="sticky top-0 sm:ml-64 flex px-6 justify-between items-center bg-slate-700 h-28">
+      <div className="sticky top-0 lg:ml-64 flex px-6 justify-between items-center bg-gray-800 h-28">
         <h1 className="text-white text-3xl font-bold pb-1">Platform Launch</h1>
         <div className="flex gap-3 items-center">
-          <button className="flex gap-3 text-gray-300 p-4 bg-purple-400 rounded-full">
+          <button className="flex gap-3 text-gray-300 p-4 bg-indigo-600 rounded-full">
             <Layout size={20} />
-            <div>+ Add New Task</div>
+            <div className="text-white">+ Add New Task</div>
           </button>
           <button>
             <MoreVertical size={30} className={"text-white"} />
@@ -80,253 +71,7 @@ export default function DashboardLayout({
         </div>
       </div>
       {/* {dashboard} */}
-      <div className="p-4 sm:ml-64">
-        {/* grid */}
-        <div className=" grid grid-cols-3 m-6 gap-4">
-          {/* todo board */}
-          <div>
-            <div className="flex gap-2 items-center mb-3">
-              <div className="rounded-full w-5 h-5 bg-sky-400"></div>
-              <div className="text-gray-400 text-lg font-semibold">
-                {"TODO (5)"}
-              </div>
-            </div>
-
-            {/* task */}
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold mb-1">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-          </div>
-
-          {/* doing board */}
-          <div>
-            <div className="flex gap-2 items-center mb-3">
-              <div className="rounded-full w-5 h-5 bg-purple-500"></div>
-              <div className="text-gray-400 text-lg font-semibold">
-                {"Doing (5)"}
-              </div>
-            </div>
-
-            {/* task */}
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold mb-1">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-          </div>
-
-          {/* done board */}
-          <div>
-            <div className="flex gap-2 items-center mb-3">
-              <div className="rounded-full w-5 h-5 bg-green-400"></div>
-              <div className="text-gray-400 text-lg font-semibold">
-                {"Done (5)"}
-              </div>
-            </div>
-
-            {/* task */}
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold mb-1">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-
-            <div className="text-white p-6 bg-slate-700 rounded-lg mb-4">
-              <div className="text-xl font-semibold">
-                building ui for unboarding
-              </div>
-              <div className="text-gray-400">0 0f 3 subtaks</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="p-4 lg:ml-64">{children}</div>
     </div>
   );
 }
