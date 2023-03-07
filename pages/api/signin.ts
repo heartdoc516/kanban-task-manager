@@ -30,6 +30,7 @@ export default async function signinHandler(
       );
 
       res.status(201);
+
       res.json({});
     } else {
       throw new Error();

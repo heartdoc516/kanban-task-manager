@@ -24,11 +24,11 @@ export const validateJWT = async (jwt) => {
 export const getUserFromCookie = async (cookies) => {
   const jwt = cookies.get(process.env.COOKIE_NAME);
 
-  const { id } = await validateJWT(jwt.value);
+  const payload = await validateJWT(jwt.value);
 
-  const user = prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
-      id: id,
+      id: payload.payload.id,
     },
   });
   return user;
