@@ -1,8 +1,9 @@
 "use client";
 
 import Board from "./Board";
-import { Layout } from "react-feather";
+
 import { useState } from "react";
+import NewBoard from "./NewBoard";
 
 const Boards = ({ boards }) => {
   const [activeBoard, setActiveBoard] = useState(boards[0].id);
@@ -16,10 +17,7 @@ const Boards = ({ boards }) => {
           isActive={activeBoard === board.id}
         />
       ))}
-      <button className="flex gap-3 text-gray-300 py-4 pl-5">
-        <Layout size={20} />
-        <div>+ Create New Board</div>
-      </button>
+      <NewBoard />
     </div>
   );
 };

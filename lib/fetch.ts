@@ -1,4 +1,5 @@
 export const fetcher = async ({ url, method, body, json = true }) => {
+  console.log(url, method, body);
   const res = await fetch(url, {
     method,
     ...(body && { body: JSON.stringify(body) }),
@@ -24,4 +25,13 @@ export const register = (user) => {
 
 export const signin = (user) => {
   return fetcher({ url: "api/signin", method: "post", body: user });
+};
+
+export const newBoard = (boardTitle) => {
+  console.log(boardTitle);
+  return fetcher({
+    url: "api/newboard",
+    method: "post",
+    body: { title: boardTitle },
+  });
 };
