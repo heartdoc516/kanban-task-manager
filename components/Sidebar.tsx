@@ -21,7 +21,7 @@ const Sidebar = async () => {
   const boards = await getData();
 
   return (
-    <div className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0 bg-gray-800 w-1/6 pr-5 py-10 border-r border-slate-500">
+    <div className="fixed top-0 left-0 z-10 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0 bg-gray-800 w-1/6 pr-5 py-10 border-r border-slate-500">
       <div className="flex flex-col justify-between h-full">
         <div>
           <div className="flex justify-center text-white gap-4">
@@ -31,10 +31,8 @@ const Sidebar = async () => {
             </div>
           </div>
           <div className="text-white text-center mt-8 tracking-widest">
-            {"All Boards (4)"}
+            {`All Boards (${boards.length})`}
           </div>
-
-          {/* boards */}
 
           <Boards boards={boards} />
         </div>

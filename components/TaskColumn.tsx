@@ -1,4 +1,6 @@
+import { getUserFromCookie } from "@/lib/jwt";
 import Task from "./Task";
+import { cookies } from "next/headers";
 
 const color = {
   TODO: "bg-cyan-400",

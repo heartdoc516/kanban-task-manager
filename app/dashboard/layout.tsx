@@ -1,7 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import { Suspense } from "react";
-import BoardsSkeleton from "@/components/BoardsSkeleton";
+
 import SidebarSkeleton from "@/components/SidebarSkeleton";
 
 export default async function DashboardLayout({
@@ -12,6 +12,7 @@ export default async function DashboardLayout({
   return (
     <div>
       <div id="modal"></div>
+      <div id="new-task-modal"></div>
       <Suspense fallback={<SidebarSkeleton />}>
         <Sidebar />
       </Suspense>

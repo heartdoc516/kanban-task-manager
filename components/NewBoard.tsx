@@ -33,7 +33,7 @@ const NewBoard = () => {
         isOpen={modalIsOpen}
         className={"w-96 m-auto bg-gray-800 rounded-lg"}
         overlayClassName={
-          "bg-slate-900/75 absolute top-0 left-0 right-0 bottom-0 flex items-center"
+          "bg-slate-900/75 absolute w-screen top-0 left-0 right-0 bottom-0 flex items-center h-screen w-screen z-20"
         }
       >
         <div className="px-4 py-8">

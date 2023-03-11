@@ -13,7 +13,7 @@ const SidebarSkeleton = () => {
             </div>
           </div>
           <div className="text-white text-center mt-8 tracking-widest">
-            {"All Boards (4)"}
+            {"All Boards (-)"}
           </div>
 
           {/* boards */}
