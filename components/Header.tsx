@@ -1,5 +1,5 @@
 import { MoreVertical, Layout } from "react-feather";
-import AddNewTask from "./AddNewTask";
+import AddNewTask from "./AddNewTaskModal";
 
 const Header = () => {
   return (
