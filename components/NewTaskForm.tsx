@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Subtask from "./Subtask";
+import { newTask } from "@/lib/fetch";
 
 const initialState = {
   title: "",
@@ -35,8 +36,14 @@ const NewTaskForm = () => {
     );
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    await newTask();
+  }
+
   return (
-    <form className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <label htmlFor="title" className="text-white">
         Title
       </label>
@@ -117,7 +124,10 @@ const NewTaskForm = () => {
         </option>
       </select>
 
-      <button className="bg-indigo-500 text-white rounded-full py-2">
+      <button
+        type="submit"
+        className="bg-indigo-500 text-white rounded-full py-2"
+      >
         + Create Task
       </button>
     </form>

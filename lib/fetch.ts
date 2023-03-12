@@ -30,8 +30,18 @@ export const signin = (user) => {
 export const newBoard = (boardTitle) => {
   console.log(boardTitle);
   return fetcher({
-    url: "api/newboard",
+    url: "/api/newboard",
     method: "post",
     body: { title: boardTitle },
+  });
+};
+
+export const newTask = () => {
+  return fetcher({
+    url: "/api/newtask",
+    method: "post",
+    body: {
+      title: "task 1",
+    },
   });
 };
