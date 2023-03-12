@@ -1,10 +1,11 @@
+"use client";
+
 import { useState } from "react";
-import { X } from "react-feather";
+import Subtask from "./Subtask";
 
 const initialState = {
   title: "",
   description: "",
-  subtasks: [],
   status: "",
 };
 
@@ -12,14 +13,26 @@ let nextId = 1;
 
 const NewTaskForm = () => {
   const [taskForm, setTaskForm] = useState(initialState);
+  const [subtasks, setSubtasks] = useState([]);
 
-  function handleDeleteSubtask(subtaskId) {
-    const subtasks = taskForm.subtasks;
+  function handleDeleteSubtask(subtaskId: number) {
+    setSubtasks(subtasks.filter((subtask) => subtask.id !== subtaskId));
+  }
 
-    setTaskForm({
-      ...taskForm,
-      subtasks: subtasks.filter((subtask) => subtaskId !== subtask.id),
-    });
+  function addSubtask(e) {
+    setSubtasks([...subtasks, { title: "", id: nextId++ }]);
+  }
+
+  function handleSubtask(e, subtaskId) {
+    setSubtasks(
+      subtasks.map((subtask) => {
+        if (subtaskId === subtask.id) {
+          return { ...subtask, title: e.target.value };
+        } else {
+          return subtask;
+        }
+      })
+    );
   }
 
   return (
@@ -58,33 +71,17 @@ const NewTaskForm = () => {
       <label htmlFor="subtasks" className="text-white">
         Subtasks
       </label>
-      {taskForm.subtasks.map((subtask) => (
-        <div className="flex gap-4">
-          <input
-            type="text"
-            required
-            name="subtasks"
-            placeholder={`e.g. refactor code, coffe break ${subtask.id}`}
-            className="flex-1 bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
-          />
-          <button
-            onClick={() => handleDeleteSubtask(subtask.id)}
-            className="text-gray-400"
-          >
-            <X size={20} />
-          </button>
-        </div>
+      {subtasks.map((subtask) => (
+        <Subtask
+          subtask={subtask}
+          handleDeleteSubtask={handleDeleteSubtask}
+          handleSubtask={handleSubtask}
+        />
       ))}
 
       <button
-        onClick={() => {
-          setTaskForm((state) => ({
-            ...state,
-            subtasks: [...state.subtasks, { name: "", id: nextId++ }],
-          }));
-        }}
-        className="text-gray-400"
-        className="bg-indigo-50 text-indigo-600 rounded-full py-2 my-8"
+        onClick={addSubtask}
+        className="text-gray-400 bg-indigo-50 text-indigo-600 rounded-full py-2 mb-8"
       >
         + Add New Subtask
       </button>
@@ -93,6 +90,9 @@ const NewTaskForm = () => {
         Status
       </label>
       <select
+        onChange={(e) => {
+          setTaskForm({ ...taskForm, status: e.target.value });
+        }}
         name="status"
         id="status"
         className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none mb-8"
@@ -104,13 +104,13 @@ const NewTaskForm = () => {
           TODO
         </option>
         <option
-          value="TODO"
+          value="DOING"
           className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
         >
           DOING
         </option>
         <option
-          value="TODO"
+          value="DONE"
           className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
         >
           DONE
