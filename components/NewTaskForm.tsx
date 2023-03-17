@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Subtask from "./Subtask";
 import { newTask } from "@/lib/fetch";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 const initialState = {
   title: "",
   description: "",
-  status: "",
+  status: "TODO",
 };
 
 let nextId = 1;
@@ -15,6 +16,8 @@ let nextId = 1;
 const NewTaskForm = () => {
   const [taskForm, setTaskForm] = useState(initialState);
   const [subtasks, setSubtasks] = useState([]);
+
+  const boardId = useSelectedLayoutSegment();
 
   function handleDeleteSubtask(subtaskId: number) {
     setSubtasks(subtasks.filter((subtask) => subtask.id !== subtaskId));
@@ -39,7 +42,13 @@ const NewTaskForm = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await newTask();
+    await newTask(
+      taskForm.title,
+      taskForm.description,
+      subtasks,
+      taskForm.status,
+      boardId
+    );
   }
 
   return (
@@ -50,7 +59,6 @@ const NewTaskForm = () => {
       <input
         onChange={(e) => {
           setTaskForm((state) => ({ ...state, title: e.target.value }));
-          console.log(taskForm);
         }}
         type="text"
         required
@@ -68,7 +76,6 @@ const NewTaskForm = () => {
             ...state,
             description: e.target.value,
           }));
-          console.log(taskForm);
         }}
         name="description"
         placeholder="add a description"

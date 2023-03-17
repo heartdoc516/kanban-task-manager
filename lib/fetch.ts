@@ -36,12 +36,16 @@ export const newBoard = (boardTitle) => {
   });
 };
 
-export const newTask = () => {
+export const newTask = (title, description, subtasks, status, boardId) => {
   return fetcher({
     url: "/api/newtask",
     method: "post",
     body: {
-      title: "task 1",
+      title: title,
+      description: description,
+      subtasks: subtasks,
+      status: status,
+      boardId: boardId,
     },
   });
 };
