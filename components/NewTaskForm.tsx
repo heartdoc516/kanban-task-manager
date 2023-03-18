@@ -13,11 +13,11 @@ const initialState = {
 
 let nextId = 1;
 
-const NewTaskForm = () => {
+const NewTaskForm = ({ setModalIsOpen, params }) => {
   const [taskForm, setTaskForm] = useState(initialState);
   const [subtasks, setSubtasks] = useState([]);
 
-  const boardId = useSelectedLayoutSegment();
+  const boardId = params.id;
 
   function handleDeleteSubtask(subtaskId: number) {
     setSubtasks(subtasks.filter((subtask) => subtask.id !== subtaskId));
@@ -49,6 +49,8 @@ const NewTaskForm = () => {
       taskForm.status,
       boardId
     );
+
+    setModalIsOpen(false);
   }
 
   return (

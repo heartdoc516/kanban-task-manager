@@ -7,7 +7,7 @@ import NewTaskForm from "./NewTaskForm";
 
 Modal.setAppElement("#new-task-modal");
 
-const AddNewTask = () => {
+const AddNewTask = ({ params }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -41,7 +41,7 @@ const AddNewTask = () => {
             </button>
           </div>
 
-          <NewTaskForm />
+          <NewTaskForm setModalIsOpen={setModalIsOpen} params={params} />
         </div>
       </Modal>
     </>

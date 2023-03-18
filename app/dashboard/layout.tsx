@@ -13,13 +13,12 @@ export default async function DashboardLayout({
     <div>
       <div id="modal"></div>
       <div id="new-task-modal"></div>
+      <div id="view-task-modal"></div>
       <Suspense fallback={<SidebarSkeleton />}>
         <Sidebar />
       </Suspense>
 
-      <Header />
-      {/* {dashboard} */}
-      <div className="p-4 lg:ml-64">{children}</div>
+      {children}
     </div>
   );
 }

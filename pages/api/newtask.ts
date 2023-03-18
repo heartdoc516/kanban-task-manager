@@ -8,7 +8,7 @@ export default async function taskHandler(req, res) {
     data: {
       name: req.body.title,
       description: req.body.description,
-      boardId: req.body.boardId, //how do i get this
+      boardId: req.body.boardId,
       authorId: user.payload.id,
       status: req.body.status,
     },

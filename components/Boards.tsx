@@ -4,9 +4,12 @@ import Board from "./Board";
 import Link from "next/link";
 import { useState } from "react";
 import NewBoard from "./NewBoard";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 const Boards = ({ boards }) => {
-  const [activeBoard, setActiveBoard] = useState(null);
+  const boardId = useSelectedLayoutSegment();
+
+  const [activeBoard, setActiveBoard] = useState(boardId || null);
 
   return (
     <div className="mt-8">

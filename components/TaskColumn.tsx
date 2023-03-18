@@ -2,6 +2,7 @@ import { getUserFromCookie } from "@/lib/jwt";
 import Task from "./Task";
 import { cookies } from "next/headers";
 import { db } from "@/lib/db";
+import { delay } from "@/lib/delay";
 
 const color = {
   TODO: "bg-cyan-400",
@@ -10,6 +11,7 @@ const color = {
 };
 
 const getData = async (status, boardId) => {
+  await delay(2000);
   const user = getUserFromCookie(cookies());
 
   const tasks = await db.task.findMany({
@@ -17,6 +19,9 @@ const getData = async (status, boardId) => {
       authorId: user.id,
       boardId: boardId,
       status: status,
+    },
+    include: {
+      subtasks: true,
     },
   });
 
@@ -33,7 +38,7 @@ const TaskColumn = async ({ status, boardId }) => {
       </div>
 
       {tasks.map((task) => (
-        <Task name={task.name} />
+        <Task name={task.name} subtasks={task.subtasks} />
       ))}
     </div>
   );
