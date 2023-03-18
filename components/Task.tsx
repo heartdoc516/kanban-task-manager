@@ -2,13 +2,11 @@
 
 import Modal from "react-modal";
 import { useState } from "react";
-import { X } from "react-feather";
-import { MoreVertical } from "react-feather";
 import ViewTaskForm from "./ViewTaskForm";
 
 Modal.setAppElement("#view-task-modal");
 
-const Task = ({ name, subtasks }) => {
+const Task = ({ task }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -17,10 +15,10 @@ const Task = ({ name, subtasks }) => {
         onClick={() => setModalIsOpen(true)}
         className="text-white p-6 bg-gray-800 rounded-lg mb-4 cursor-pointer hover:scale-110 ease-out duration-200"
       >
-        <div className="text-xl font-semibold mb-1">{name}</div>
+        <div className="text-xl font-semibold mb-1">{task.name}</div>
         <div className="text-gray-400">
-          {subtasks.filter((subtask) => subtask.status).length} of{" "}
-          {subtasks.length} subtasks completed
+          {task.subtasks.filter((subtask) => subtask.status).length} of{" "}
+          {task.subtasks.length} subtasks completed
         </div>
       </div>
 
@@ -31,7 +29,7 @@ const Task = ({ name, subtasks }) => {
           "bg-slate-900/75 fixed top-0 left-0 right-0 bottom-0 flex items-center w-screen h-screen z-20"
         }
       >
-        <ViewTaskForm setModalIsOpen={setModalIsOpen} />
+        <ViewTaskForm setModalIsOpen={setModalIsOpen} task={task} />
       </Modal>
     </>
   );

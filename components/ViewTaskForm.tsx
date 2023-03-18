@@ -1,10 +1,14 @@
-import { MoreVertical, X } from "react-feather";
+"use client";
 
-const ViewTaskForm = ({ setModalIsOpen }) => {
+import { MoreVertical, X } from "react-feather";
+import { useState } from "react";
+import SubtaskInput from "./SubtaskInput";
+
+const ViewTaskForm = ({ setModalIsOpen, task }) => {
   return (
     <div className="px-8 py-8">
       <div className="flex justify-between items-center mb-8">
-        <h4 className="text-white text-xl font-bold">Task Name</h4>
+        <h4 className="text-white text-xl font-bold">{task.name}</h4>
         <div className="flex gap-4">
           <MoreVertical size={20} className="text-gray-400" />
           <button
@@ -15,40 +19,15 @@ const ViewTaskForm = ({ setModalIsOpen }) => {
           </button>
         </div>
       </div>
-      <div className="text-gray-400 mb-6">task description</div>
-      <div className="text-white mb-3">Subtasks (2 0f 3)</div>
+      <div className="text-gray-400 mb-6">{task.description}</div>
+      <div className="text-white mb-3">{`Subtasks (${
+        task.subtasks.filter((subtask) => subtask.status).length
+      } of ${task.subtasks.length})`}</div>
       <form>
         <div className="mb-6">
-          <div className="flex bg-gray-900 rounded-md mb-2 p-3 gap-6 items-center">
-            <input
-              type={"checkbox"}
-              className="bg-gray-800 text-indigo-600 cursor-pointer border-1 w-5 h-5 rounded-sm focus:ring-0 focus:ring-offset-0 focus:border-1"
-              name="subtask"
-            />
-            <label className="text-white" htmlFor="subtask">
-              subtask name
-            </label>
-          </div>
-          <div className="flex bg-gray-900 rounded-md mb-2 p-3 gap-6 items-center">
-            <input
-              type={"checkbox"}
-              className="bg-gray-800 text-indigo-600 cursor-pointer border-1 w-5 h-5 rounded-sm focus:ring-0 focus:ring-offset-0 focus:border-1"
-              name="subtask"
-            />
-            <label className="text-white" htmlFor="subtask">
-              subtask name
-            </label>
-          </div>
-          <div className="flex bg-gray-900 rounded-md mb-2 p-3 gap-6 items-center">
-            <input
-              type={"checkbox"}
-              className="bg-gray-800 text-indigo-600 cursor-pointer border-1 w-5 h-5 rounded-sm focus:ring-0 focus:ring-offset-0 focus:border-1"
-              name="subtask"
-            />
-            <label className="text-white" htmlFor="subtask">
-              subtask name
-            </label>
-          </div>
+          {task.subtasks.map((subtask) => (
+            <SubtaskInput subtask={subtask} />
+          ))}
         </div>
 
         <label htmlFor="status" className="text-white block mb-3">
@@ -62,18 +41,21 @@ const ViewTaskForm = ({ setModalIsOpen }) => {
           <option
             value="TODO"
             className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
+            selected={task.status === "TODO" ? true : false}
           >
             TODO
           </option>
           <option
             value="DOING"
             className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
+            selected={task.status === "DOING" ? true : false}
           >
             DOING
           </option>
           <option
             value="DONE"
             className="bg-gray-800 border border-gray-600 p-2 rounded-md text-white outline-none"
+            selected={task.status === "DONE" ? true : false}
           >
             DONE
           </option>

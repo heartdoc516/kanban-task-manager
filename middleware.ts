@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { redirect } from "next/navigation";
+
 import { jwtVerify } from "jose";
 
 const PUBLIC_FILE = /\.(.*)$/;
@@ -14,6 +14,11 @@ const validateJWT = async (jwt) => {
 
 export default async function Middleware(req, res) {
   const { pathname } = req.nextUrl;
+
+  if (pathname === "/") {
+    req.nextUrl.pathname = "/signin";
+    return NextResponse.redirect(req.nextUrl);
+  }
 
   if (
     pathname.startsWith("/_next") ||

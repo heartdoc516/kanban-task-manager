@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Layout } from "react-feather";
 import { register, signin } from "@/lib/fetch";
+import { useRouter } from "next/navigation";
 
 const registerContent = {
   header: "Create New Account",
@@ -26,6 +27,8 @@ const AuthForm = ({ mode }) => {
     password: "",
     passwordConfirm: "",
   });
+
+  const router = useRouter();
 
   const [error, setError] = useState(null);
 
@@ -50,6 +53,7 @@ const AuthForm = ({ mode }) => {
             password: "",
             passwordConfirm: "",
           });
+          router.push("/dashboard");
         } catch (e) {
           setError("This account already exists");
         }
@@ -64,6 +68,7 @@ const AuthForm = ({ mode }) => {
           password: "",
           passwordConfirm: "",
         });
+        router.push("/dashboard");
       } catch (e) {
         setError("Wrong credentials");
       }

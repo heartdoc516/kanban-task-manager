@@ -20,11 +20,11 @@ export const fetcher = async ({ url, method, body, json = true }) => {
 };
 
 export const register = (user) => {
-  return fetcher({ url: "api/register", method: "post", body: user });
+  return fetcher({ url: "/api/register", method: "post", body: user });
 };
 
 export const signin = (user) => {
-  return fetcher({ url: "api/signin", method: "post", body: user });
+  return fetcher({ url: "/api/signin", method: "post", body: user });
 };
 
 export const newBoard = (boardTitle) => {
