@@ -1,5 +1,4 @@
 export const fetcher = async ({ url, method, body, json = true }) => {
-  console.log(url, method, body);
   const res = await fetch(url, {
     method,
     ...(body && { body: JSON.stringify(body) }),
@@ -46,6 +45,17 @@ export const newTask = (title, description, subtasks, status, boardId) => {
       subtasks: subtasks,
       status: status,
       boardId: boardId,
+    },
+  });
+};
+
+export const updateTask = (taskStatus, subtasks) => {
+  return fetcher({
+    url: "/api/task",
+    method: "put",
+    body: {
+      taskStatus: taskStatus,
+      subtasks: subtasks,
     },
   });
 };

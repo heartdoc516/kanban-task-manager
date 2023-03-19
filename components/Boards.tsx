@@ -14,11 +14,12 @@ const Boards = ({ boards }) => {
   return (
     <div className="mt-8">
       {boards.map((board) => (
-        <Link href={`/dashboard/${board.id}`}>
+        <Link href={`/dashboard/${board.id}`} key={board.id}>
           <Board
             board={board}
             onSelect={() => setActiveBoard(board.id)}
             isActive={activeBoard === board.id}
+            key={board.id}
           />
         </Link>
       ))}

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Subtask from "./Subtask";
 import { newTask } from "@/lib/fetch";
-import { useSelectedLayoutSegment } from "next/navigation";
 
 const initialState = {
   title: "",
@@ -92,6 +91,7 @@ const NewTaskForm = ({ setModalIsOpen, params }) => {
           subtask={subtask}
           handleDeleteSubtask={handleDeleteSubtask}
           handleSubtask={handleSubtask}
+          key={subtask.id}
         />
       ))}
 

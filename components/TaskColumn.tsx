@@ -38,7 +38,7 @@ const TaskColumn = async ({ status, boardId }) => {
       </div>
 
       {tasks.map((task) => (
-        <Task task={task} />
+        <Task task={task} key={task.id} />
       ))}
     </div>
   );
