@@ -49,11 +49,12 @@ export const newTask = (title, description, subtasks, status, boardId) => {
   });
 };
 
-export const updateTask = (taskStatus, subtasks) => {
+export const updateTask = (taskId, taskStatus, subtasks) => {
   return fetcher({
     url: "/api/task",
     method: "put",
     body: {
+      taskId: taskId,
       taskStatus: taskStatus,
       subtasks: subtasks,
     },
