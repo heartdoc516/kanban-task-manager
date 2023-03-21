@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Subtask from "./Subtask";
 import { newTask } from "@/lib/fetch";
+import { useRouter } from "next/navigation";
+import LoaderSpinner from "./LoaderSpinner";
 
 const initialState = {
   title: "",
@@ -10,11 +12,16 @@ const initialState = {
   status: "TODO",
 };
 
+type subtasks = { title: string; id: number }[];
+const initialSubtasksState: subtasks = [];
+
 let nextId = 1;
 
 const NewTaskForm = ({ setModalIsOpen, params }) => {
   const [taskForm, setTaskForm] = useState(initialState);
-  const [subtasks, setSubtasks] = useState([]);
+  const [subtasks, setSubtasks] = useState(initialSubtasksState);
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const boardId = params.id;
 
@@ -48,8 +55,13 @@ const NewTaskForm = ({ setModalIsOpen, params }) => {
       taskForm.status,
       boardId
     );
-
-    setModalIsOpen(false);
+    startTransition(() => {
+      router.refresh();
+      setModalIsOpen(false);
+    });
+  }
+  if (isPending) {
+    return <LoaderSpinner />;
   }
 
   return (

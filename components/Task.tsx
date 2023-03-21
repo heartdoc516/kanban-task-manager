@@ -13,7 +13,7 @@ const Task = ({ task }) => {
     <>
       <div
         onClick={() => setModalIsOpen(true)}
-        className="text-white p-6 bg-gray-800 rounded-lg mb-4 cursor-pointer hover:scale-110 ease-out duration-200"
+        className="text-white p-6 bg-gray-800 rounded-lg mb-4 cursor-pointer border border-gray-800 hover:border-gray-600"
       >
         <div className="text-xl font-semibold mb-1">{task.name}</div>
         <div className="text-gray-400">

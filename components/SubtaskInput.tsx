@@ -8,9 +8,15 @@ const SubtaskInput = ({ subtask, handleChecked }) => {
         defaultChecked={subtask.status}
         type={"checkbox"}
         className="bg-gray-800 text-indigo-600 cursor-pointer border-1 w-5 h-5 rounded-sm focus:ring-0 focus:ring-offset-0 focus:border-1"
-        name="subtask"
+        name={subtask.id}
+        id={subtask.id}
       />
-      <label className="text-white" htmlFor="subtask">
+      <label
+        className={
+          subtask.status === true ? "text-gray-500 line-through" : "text-white"
+        }
+        htmlFor={subtask.id}
+      >
         {subtask.name}
       </label>
     </div>

@@ -17,9 +17,9 @@ const AddNewTask = ({ params }) => {
         className="flex items-center gap-3 text-gray-300 px-6 py-2 bg-indigo-600 rounded-full"
       >
         <Layout size={20} className="hidden md:block" />
-        <div className="text-white">
-          <span className="text-2xl md:text-md">+</span>
-          <span className="hidden md:inline-block">Add New Task</span>
+        <div className="flex items-center text-white">
+          <div className="text-2xl md:text-md">+</div>
+          <div className="hidden md:inline-block">Add New Task</div>
         </div>
       </button>
 

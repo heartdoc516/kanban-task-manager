@@ -1,5 +1,6 @@
 import { MoreVertical, Layout } from "react-feather";
 import AddNewTask from "./AddNewTaskModal";
+import Dropdown from "./Dropdown";
 import { db } from "@/lib/db";
 
 const getData = async (boardId) => {
@@ -19,9 +20,7 @@ const Header = async ({ params }) => {
       <h1 className="text-white text-3xl font-bold pb-1">{board.name}</h1>
       <div className="flex gap-3 items-center">
         <AddNewTask params={params} />
-        <button>
-          <MoreVertical size={30} className={"text-white"} />
-        </button>
+        <Dropdown />
       </div>
     </div>
   );
