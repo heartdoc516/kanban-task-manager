@@ -6,7 +6,6 @@ import { getUserFromCookie } from "@/lib/jwt";
 import { cookies } from "next/headers";
 
 const getData = async () => {
-  await delay(2000);
   const user = await getUserFromCookie(cookies());
   const boards = await db.board.findMany({
     where: {

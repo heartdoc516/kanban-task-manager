@@ -11,7 +11,6 @@ const color = {
 };
 
 const getData = async (status, boardId) => {
-  await delay(1000);
   const user = getUserFromCookie(cookies());
 
   const tasks = await db.task.findMany({

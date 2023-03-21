@@ -20,7 +20,7 @@ const Header = async ({ params }) => {
       <h1 className="text-white text-3xl font-bold pb-1">{board.name}</h1>
       <div className="flex gap-3 items-center">
         <AddNewTask params={params} />
-        <Dropdown />
+        <Dropdown boardId={params.id} />
       </div>
     </div>
   );

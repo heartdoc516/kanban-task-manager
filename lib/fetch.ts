@@ -26,10 +26,14 @@ export const signin = (user) => {
   return fetcher({ url: "/api/signin", method: "post", body: user });
 };
 
-export const newBoard = (boardTitle) => {
+export const signout = () => {
+  return fetcher({ url: "/api/signout", method: "get", body: null });
+};
+
+export const newBoard = (boardTitle: string) => {
   console.log(boardTitle);
   return fetcher({
-    url: "/api/newboard",
+    url: "/api/board",
     method: "post",
     body: { title: boardTitle },
   });
@@ -37,7 +41,7 @@ export const newBoard = (boardTitle) => {
 
 export const newTask = (title, description, subtasks, status, boardId) => {
   return fetcher({
-    url: "/api/newtask",
+    url: "/api/task",
     method: "post",
     body: {
       title: title,
@@ -57,6 +61,16 @@ export const updateTask = (taskId, taskStatus, subtasks) => {
       taskId: taskId,
       taskStatus: taskStatus,
       subtasks: subtasks,
+    },
+  });
+};
+
+export const deleteBoard = (boardId) => {
+  return fetcher({
+    url: "/api/board",
+    method: "delete",
+    body: {
+      boardId: boardId,
     },
   });
 };

@@ -9,6 +9,5 @@ export default async function signOutHandler(req, res) {
       maxAge: -1,
     })
   );
-  res.writeHead(302, { Location: "/signin" });
-  res.end();
+  res.json({});
 }
