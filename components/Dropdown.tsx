@@ -46,7 +46,7 @@ const Dropdown = ({ boardId }) => {
               {!isPending ? (
                 <Trash2 size={20} />
               ) : (
-                <Spinner color={"fill-red-600"} />
+                <Spinner color={"fill-red-600"} size="lg" />
               )}
             </div>
           </button>

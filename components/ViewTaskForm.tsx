@@ -1,11 +1,12 @@
 "use client";
+import { X } from "react-feather";
 
-import { MoreVertical, X } from "react-feather";
 import { useState, useTransition } from "react";
 import SubtaskInput from "./SubtaskInput";
 import { updateTask } from "@/lib/fetch";
 import { useRouter } from "next/navigation";
 import LoaderSpinner from "./LoaderSpinner";
+import DeleteTask from "./DeleteTask";
 
 const ViewTaskForm = ({ setModalIsOpen, task }) => {
   const router = useRouter();
@@ -57,7 +58,8 @@ const ViewTaskForm = ({ setModalIsOpen, task }) => {
       <div className="flex justify-between items-center mb-8">
         <h4 className="text-white text-xl font-bold">{task.name}</h4>
         <div className="flex gap-4">
-          <MoreVertical size={20} className="text-gray-400" />
+          <DeleteTask task={task} />
+
           <button onClick={handleUpdate} className="text-gray-400">
             <X size={20} />
           </button>

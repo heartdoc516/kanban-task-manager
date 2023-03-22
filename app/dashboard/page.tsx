@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 
-export default function Page() {
+export default function Page({ params }) {
+  console.log(params.id);
   return (
     <>
       <div className="p-4 lg:ml-64">

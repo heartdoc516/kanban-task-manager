@@ -14,6 +14,7 @@ export default async function DashboardLayout({
       <div id="modal"></div>
       <div id="new-task-modal"></div>
       <div id="view-task-modal"></div>
+      <div id="delete-task-modal"></div>
       <Suspense fallback={<SidebarSkeleton />}>
         <Sidebar />
       </Suspense>

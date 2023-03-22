@@ -80,6 +80,24 @@ export default async function updateTaskHandler(req, res) {
 
     res.status(200);
     res.json({ data: task });
-    console.log(task);
+  }
+
+  if (req.method === "DELETE") {
+    const user = await validateJWT(req.cookies[process.env.COOKIE_NAME]);
+
+    await db.subtask.deleteMany({
+      where: {
+        taskId: req.body.taskId,
+      },
+    });
+
+    await db.task.delete({
+      where: {
+        id: req.body.taskId,
+      },
+    });
+
+    res.status(200);
+    res.json({ message: "task deleted" });
   }
 }

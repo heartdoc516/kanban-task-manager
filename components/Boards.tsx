@@ -2,36 +2,40 @@
 
 import Board from "./Board";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import NewBoard from "./NewBoard";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
+import { BoardContext, setBoardContext } from "@/lib/BoardContextProvider";
 
 const Boards = ({ boards }) => {
   const boardId = useSelectedLayoutSegment();
   const router = useRouter();
 
-  const [activeBoard, setActiveBoard] = useState(
-    boardId ? boards.filter((board) => board.id === boardId)[0] : boards[0]
-  );
+  const activeBoard = useContext(BoardContext);
+  const dispatch = useContext(setBoardContext);
 
   useEffect(() => {
-    if (activeBoard) {
-      router.push(`/dashboard/${activeBoard.id}`);
+    if (boardId === null && boards.length) {
+      dispatch({ board: boards[0] });
+      router.push(`/dashboard/${boards[0].id}`);
     }
-  }, []);
+  });
 
   const handleSelectBoard = (board) => {
-    setActiveBoard(board);
+    dispatch({ board });
   };
 
   return (
     <div className="mt-8">
+      <div className="text-white text-center mt-8 mb-4 tracking-widest">
+        {`All Boards (${boards.length})`}
+      </div>
       {boards.map((board) => (
         <Link href={`/dashboard/${board.id}`} key={board.id}>
           <Board
             board={board}
             onSelect={() => handleSelectBoard(board)}
-            isActive={activeBoard === board}
+            activeBoard={activeBoard}
             key={board.id}
           />
         </Link>

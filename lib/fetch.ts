@@ -74,3 +74,13 @@ export const deleteBoard = (boardId) => {
     },
   });
 };
+
+export const deleteTask = (taskId) => {
+  return fetcher({
+    url: "/api/task",
+    method: "delete",
+    body: {
+      taskId: taskId,
+    },
+  });
+};
