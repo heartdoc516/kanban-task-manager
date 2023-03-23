@@ -94,7 +94,7 @@ const AuthForm = ({ mode }) => {
     >
       <div className="flex flex-col justify-around gap-4 mx-auto">
         <div className="flex justify-center px-4 gap-4">
-          <Layout size={40} className="text-purple-500" />
+          <Layout size={40} className="text-indigo-600" />
           <div className="text-center">
             <div className="text-4xl font-bold tracking-wider ">kanban</div>
             <div className="p-0 m-0">Task Manager</div>
@@ -179,12 +179,12 @@ const AuthForm = ({ mode }) => {
 
         <button
           type="submit"
-          className="tracking-widest text-lg mt-10 w-100 bg-purple-500 rounded-full p-2 my-3"
+          className="tracking-widest text-lg mt-10 w-100 bg-indigo-600 rounded-full p-2 my-3"
           onClick={handleValidation}
         >
           {content.buttonText}
         </button>
-        <Link href={content.url} className="text-purple-300">
+        <Link href={content.url} className="text-indigo-400">
           {content.linkText}
         </Link>
       </div>

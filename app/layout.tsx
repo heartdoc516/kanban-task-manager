@@ -1,5 +1,6 @@
 import "../styles/global.css";
 import { BoardContextProvider } from "@/lib/BoardContextProvider";
+import { SidebarContextProvider } from "@/lib/SidebarContextProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-900 p-0 m-0 h-screen">
-        <BoardContextProvider>{children}</BoardContextProvider>
+        <BoardContextProvider>
+          <SidebarContextProvider>{children}</SidebarContextProvider>
+        </BoardContextProvider>
       </body>
     </html>
   );

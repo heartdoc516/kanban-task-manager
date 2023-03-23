@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useReducer } from "react";
 
 export const setSidebarContext = createContext(null);
@@ -10,7 +10,11 @@ function SidebarReducer(state, action) {
   return action.isDisplayed;
 }
 
-export function BoardContextProvider({ children }) {
+export function useSidebarContext() {
+  return useContext(SidebarContext);
+}
+
+export function SidebarContextProvider({ children }) {
   const [isDisplayed, dispatch] = useReducer(SidebarReducer, true);
 
   return (

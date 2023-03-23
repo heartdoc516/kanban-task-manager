@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import NewBoard from "./NewBoard";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { BoardContext, setBoardContext } from "@/lib/BoardContextProvider";
+import { useSidebarContext } from "@/lib/SidebarContextProvider";
 
 const Boards = ({ boards }) => {
   const boardId = useSelectedLayoutSegment();
