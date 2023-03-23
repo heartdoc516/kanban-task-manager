@@ -39,16 +39,14 @@ const ViewTaskForm = ({ setModalIsOpen, task }) => {
   };
 
   const handleUpdate = async () => {
-    if (subtasks === initialSubtasksState || taskStatus === task.status) {
-      setModalIsOpen(false);
-    } else {
-      await updateTask(task.id, taskStatus, subtasks);
+    setModalIsOpen(false);
 
-      startTransition(() => {
-        router.refresh();
-        setModalIsOpen(false);
-      });
-    }
+    await updateTask(task.id, taskStatus, subtasks);
+
+    startTransition(() => {
+      router.refresh();
+      setModalIsOpen(false);
+    });
   };
   if (isPending) {
     return <LoaderSpinner />;

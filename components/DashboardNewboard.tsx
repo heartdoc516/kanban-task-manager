@@ -9,7 +9,7 @@ import LoaderSpinner from "./LoaderSpinner";
 
 Modal.setAppElement("#modal");
 
-const NewBoard = ({ btnStyle }) => {
+const DashboardNewBoard = ({ btnStyle }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [title, setTitle] = useState("");
   const router = useRouter();
@@ -29,8 +29,12 @@ const NewBoard = ({ btnStyle }) => {
   return (
     <div>
       <button onClick={openModal} className={btnStyle}>
-        <Layout size={20} />
-        <div>+ Create New Board</div>
+        <div className="hidden md:block">
+          <Layout size={20} />
+        </div>
+        <div className="text-3xl md:text-lg">
+          + <span className="hidden md:inline">Create New Board</span>
+        </div>
       </button>
 
       <Modal
@@ -75,4 +79,4 @@ const NewBoard = ({ btnStyle }) => {
   );
 };
 
-export default NewBoard;
+export default DashboardNewBoard;

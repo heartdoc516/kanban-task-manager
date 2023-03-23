@@ -1,12 +1,8 @@
-import Header from "@/components/Header";
+import DashBoardHeader from "@/components/DashBoardHeader";
+import NewBoard from "@/components/NewBoard";
+import { LogOut } from "react-feather";
 
 export default function Page({ params }) {
   console.log(params.id);
-  return (
-    <>
-      <div className="p-4 lg:ml-64">
-        <div className="text-white">Select one of your boards</div>;
-      </div>
-    </>
-  );
+  return <DashBoardHeader />;
 }

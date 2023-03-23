@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useReducer } from "react";
 
 export const setBoardContext = createContext(null);
