@@ -3,8 +3,6 @@ import Dropdown from "./Dropdown";
 import { db } from "@/lib/db";
 import MobileMenu from "./MobileMenu";
 import BoardNameHeader from "./BoardNameHeader";
-import HeaderClientComponent from "./HeaderClientComponent";
-import { SidebarContext } from "@/lib/SidebarContextProvider";
 
 const getData = async (boardId) => {
   const board = await db.board.findUnique({
@@ -19,14 +17,14 @@ const Header = async ({ params }) => {
   const board = await getData(params.id);
 
   return (
-    <HeaderClientComponent>
+    <div className="sticky top-0 lg:ml-64 flex px-6 justify-between items-center bg-gray-800 h-28">
       <BoardNameHeader />
       <MobileMenu board={board} />
       <div className="flex gap-3 items-center">
         <AddNewTask params={params} />
         <Dropdown boardId={params.id} />
       </div>
-    </HeaderClientComponent>
+    </div>
   );
 };
 
