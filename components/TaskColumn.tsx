@@ -2,7 +2,6 @@ import { getUserFromCookie } from "@/lib/jwt";
 import Task from "./Task";
 import { cookies } from "next/headers";
 import { db } from "@/lib/db";
-import { delay } from "@/lib/delay";
 
 const color = {
   TODO: "bg-cyan-400",

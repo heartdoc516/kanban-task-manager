@@ -117,7 +117,7 @@ const NewTaskForm = ({ setModalIsOpen, params }) => {
 
         <button
           onClick={addSubtask}
-          className="text-gray-400 bg-indigo-50 text-indigo-600 rounded-full py-2 mb-8"
+          className=" bg-indigo-50 text-indigo-600 rounded-full py-2 mb-8"
         >
           + Add New Subtask
         </button>

@@ -1,4 +1,4 @@
-import { MoreVertical, Trash2 } from "react-feather";
+import { Trash2 } from "react-feather";
 import { useTransition, useState } from "react";
 import { useRouter } from "next/navigation";
 import Spinner from "./Spinner";

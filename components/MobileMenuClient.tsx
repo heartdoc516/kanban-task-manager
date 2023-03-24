@@ -1,6 +1,5 @@
 "use client";
 import { Layout, ChevronDown } from "react-feather";
-import ThemeToggler from "./ThemeToggler";
 import { useState } from "react";
 import Boards from "./Boards";
 
@@ -21,8 +20,6 @@ const MobileMenuClient = ({ board, boards }) => {
 
         <div className="absolute top-28 left-0 w-72 block bg-gray-800 border-b-2 border-l-2 border-r-2 border-gray-600 rounded-b-md lg:hidden">
           <Boards boards={boards} />
-
-          <ThemeToggler />
         </div>
       </>
     );

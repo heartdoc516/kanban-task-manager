@@ -1,6 +1,6 @@
 "use client";
 
-import { Layout, X } from "react-feather";
+import { Layout } from "react-feather";
 import Modal from "react-modal";
 import { useState } from "react";
 import NewTaskForm from "./NewTaskForm";

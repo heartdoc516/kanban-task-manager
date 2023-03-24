@@ -2,7 +2,7 @@
 
 import Board from "./Board";
 import Link from "next/link";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import NewBoard from "./NewBoard";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { BoardContext, setBoardContext } from "@/lib/BoardContextProvider";

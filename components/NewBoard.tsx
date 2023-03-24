@@ -30,7 +30,7 @@ const NewBoard = ({ btnStyle }) => {
     <div>
       <button onClick={openModal} className={btnStyle}>
         <Layout size={20} />
-        <div>+ Create New Board</div>
+        <div className="text-indigo-400">+ Create New Board</div>
       </button>
 
       <Modal

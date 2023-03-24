@@ -5,7 +5,6 @@ import { MoreVertical, Trash2, LogOut } from "react-feather";
 import { signout } from "@/lib/fetch";
 import { useRouter } from "next/navigation";
 import { deleteBoard } from "@/lib/fetch";
-import LoaderSpinner from "./LoaderSpinner";
 import Spinner from "./Spinner";
 
 const Dropdown = ({ boardId }) => {

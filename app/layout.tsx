@@ -14,7 +14,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-900 p-0 m-0 h-screen">
-        <BoardContextProvider>{children}</BoardContextProvider>
+        <BoardContextProvider>
+          <div id="modal"></div>
+          <div id="new-task-modal"></div>
+          <div id="view-task-modal"></div>
+          <div id="delete-task-modal"></div>
+          {children}
+        </BoardContextProvider>
       </body>
     </html>
   );
