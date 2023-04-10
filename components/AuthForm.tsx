@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LoaderSpinner from "./LoaderSpinner";
 import Link from "next/link";
 import { Layout } from "react-feather";
 import { register, signin } from "@/lib/fetch";
@@ -31,6 +32,7 @@ const AuthForm = ({ mode }) => {
   const router = useRouter();
 
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   let content = {};
   if (mode === "register") {
@@ -40,7 +42,7 @@ const AuthForm = ({ mode }) => {
   }
 
   async function handleSubmit(e) {
-    console.log("h");
+    setLoading(true);
     e.preventDefault();
 
     if (mode === "register") {
@@ -54,7 +56,9 @@ const AuthForm = ({ mode }) => {
             passwordConfirm: "",
           });
           router.push("/dashboard");
+          setLoading(false);
         } catch (e) {
+          setLoading(false);
           setError("This account already exists");
         }
       }
@@ -69,7 +73,9 @@ const AuthForm = ({ mode }) => {
           passwordConfirm: "",
         });
         router.push("/dashboard");
+        setLoading(false);
       } catch (e) {
+        setLoading(false);
         setError("Wrong credentials");
       }
     }
@@ -94,7 +100,7 @@ const AuthForm = ({ mode }) => {
     >
       <div className="flex flex-col justify-around gap-4 mx-auto">
         <div className="flex justify-center px-4 gap-4">
-          <Layout size={40} className="text-purple-500" />
+          <Layout size={40} className="text-indigo-500" />
           <div className="text-center">
             <div className="text-4xl font-bold tracking-wider ">kanban</div>
             <div className="p-0 m-0">Task Manager</div>
@@ -176,15 +182,15 @@ const AuthForm = ({ mode }) => {
             {error}
           </div>
         )}
-
+        {loading && <LoaderSpinner />}
         <button
           type="submit"
-          className="tracking-widest text-lg mt-10 w-100 bg-purple-500 rounded-full p-2 my-3"
+          className="tracking-widest text-lg mt-10 w-100 bg-indigo-500 rounded-full p-2 my-3"
           onClick={handleValidation}
         >
           {content.buttonText}
         </button>
-        <Link href={content.url} className="text-purple-300">
+        <Link href={content.url} className="text-indigo-300">
           {content.linkText}
         </Link>
       </div>
